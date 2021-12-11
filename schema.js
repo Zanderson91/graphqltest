@@ -5,8 +5,17 @@ const schema = buildSchema(`
         id: ID
         firstName: String
         lastName: String
-        gender: String
+        gender: Gender
+        age: Int
+        IsFriend: Boolean
+        stock: Float 
         email: [Email]!
+}
+
+enum Gender {
+    MALE
+    FEMALE
+    OTHER
 }
 
     type Email {
@@ -14,14 +23,15 @@ const schema = buildSchema(`
     }
 
     type Query {
-        friend: Friend
+        getFriend(id: ID): Friend
     }
 
     input FriendInput {
         id: ID
         firstName: String
         lastName: String
-        gender: String
+        gender: Gender
+        age: Int
         email: [Email]!
     }
 
